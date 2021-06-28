@@ -1,0 +1,371 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+  margin: 0;
+  background-color: #adadad;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+}
+
+.content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 1800px;
+  padding: 0 20px;
+  margin: 0 auto;
+  height: 80vh;
+}
+
+.arrow {
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.arrow:hover::before {
+  background-color: #888686;
+}
+
+.arrow__left::before {
+  content: '';
+  height: 40px;
+  width: 40px;
+  -webkit-mask-image: url("left-arrow.svg");
+          mask-image: url("left-arrow.svg");
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  background-color: white;
+}
+
+.arrow__right::before {
+  content: '';
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  -webkit-mask-image: url("right-arrow.svg");
+          mask-image: url("right-arrow.svg");
+}
+
+.carts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 20px;
+  height: 100%;
+  width: 94%;
+}
+
+.cart {
+  border: 1px #959595 solid;
+  border-radius: 10px;
+  height: 100%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 20%;
+          flex: 0 1 20%;
+  margin-right: 10px;
+  padding: 5px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  -webkit-transition: all .5s linear;
+  transition: all .5s linear;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+.cart::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: #58616b;
+  opacity: 0.8;
+  -webkit-transition: all .5s linear;
+  transition: all .5s linear;
+  cursor: pointer;
+}
+
+.cart:hover::after {
+  opacity: 0.5;
+}
+
+.cart:hover .cart-name {
+  opacity: 1;
+}
+
+.cart:hover .cart-name::after {
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
+.cart.active {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 80%;
+          flex: 0 0 80%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+}
+
+.cart.active::after {
+  content: none;
+}
+
+.cart.active .cart-name {
+  opacity: 0;
+  -webkit-transition: opacity .0s linear;
+  transition: opacity .0s linear;
+}
+
+.cart.active .cart-info {
+  position: relative;
+}
+
+.cart.active .cart-info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #83807d;
+  opacity: 0.6;
+  width: 100%;
+  border-radius: 10px;
+  -webkit-transition: all .5s linear .5s;
+  transition: all .5s linear .5s;
+}
+
+.cart.active .subtitle {
+  opacity: 1;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+  -webkit-transition: opacity .3s linear, -webkit-transform .5s linear .5s;
+  transition: opacity .3s linear, -webkit-transform .5s linear .5s;
+  transition: transform .5s linear .5s, opacity .3s linear;
+  transition: transform .5s linear .5s, opacity .3s linear, -webkit-transform .5s linear .5s;
+}
+
+.cart.active .text {
+  opacity: 1;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+  -webkit-transition: opacity .3s linear, -webkit-transform .5s linear .7s;
+  transition: opacity .3s linear, -webkit-transform .5s linear .7s;
+  transition: transform .5s linear .7s, opacity .3s linear;
+  transition: transform .5s linear .7s, opacity .3s linear, -webkit-transform .5s linear .7s;
+}
+
+.cart-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  opacity: 0;
+  -webkit-transition: opacity .3s linear;
+  transition: opacity .3s linear;
+  padding: 10px;
+  height: 100%;
+  position: relative;
+}
+
+.cart-name::after {
+  content: '';
+  position: absolute;
+  bottom: 20px;
+  left: calc(50% - 20px);
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  -webkit-mask-image: url("arrow.svg");
+          mask-image: url("arrow.svg");
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-animation-name: blink;
+          animation-name: blink;
+  -webkit-animation-duration: .5s;
+          animation-duration: .5s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+  z-index: 10;
+}
+
+.cart-name__title {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  color: white;
+  font-weight: 300;
+  font-size: 55px;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.cart-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: -1;
+}
+
+.cart-info {
+  position: absolute;
+  padding: 5px 5px 10px 20px;
+}
+
+.cart-info::before {
+  content: '';
+  background-color: #83807d;
+  opacity: 0.6;
+  height: 100%;
+  width: 0;
+  border-radius: 10px;
+}
+
+.subtitle {
+  display: inline-block;
+  color: white;
+  opacity: 0;
+  -webkit-transform: translate(-150%, 0);
+          transform: translate(-150%, 0);
+  position: relative;
+  margin-bottom: 5px;
+  font-weight: 300;
+}
+
+.subtitle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background-color: white;
+}
+
+.text {
+  color: white;
+  opacity: 0;
+  -webkit-transform: translate(-150%, 0);
+          transform: translate(-150%, 0);
+  font-weight: 100;
+}
+
+.text__link {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media (max-width: 500px) {
+  .container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .cart {
+    width: 100%;
+    height: 10vh;
+    margin-bottom: 20px;
+  }
+  .cart.active {
+    height: 30vh;
+  }
+}
+
+@-webkit-keyframes blink {
+  0% {
+    background-color: silver;
+    -webkit-transform: translate(5px, 0);
+            transform: translate(5px, 0);
+  }
+  100% {
+    background-color: #fff1d7;
+    -webkit-transform: translate(0px, 0);
+            transform: translate(0px, 0);
+  }
+}
+
+@keyframes blink {
+  0% {
+    background-color: silver;
+    -webkit-transform: translate(5px, 0);
+            transform: translate(5px, 0);
+  }
+  100% {
+    background-color: #fff1d7;
+    -webkit-transform: translate(0px, 0);
+            transform: translate(0px, 0);
+  }
+}
+/*# sourceMappingURL=styles.css.map */
